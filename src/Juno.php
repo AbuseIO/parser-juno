@@ -2,14 +2,10 @@
 
 namespace AbuseIO\Parsers;
 
-use Ddeboer\DataImport\Reader;
-use Ddeboer\DataImport\Writer;
-use Ddeboer\DataImport\Filter;
-
 class Juno extends Parser
 {
     /**
-     * Create a new Blocklistde instance
+     * Create a new Juno instance
      */
     public function __construct($parsedMail, $arfMail)
     {
@@ -64,3 +60,4 @@ class Juno extends Parser
         return $this->success();
     }
 }
+
