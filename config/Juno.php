@@ -2,10 +2,10 @@
 
 return [
     'parser' => [
-        'name'          => 'Juno',
+        'name'          => 'UOL',
         'enabled'       => true,
         'sender_map'    => [
-            '/abuse-auto@support.juno.com/',
+            '/abuse-auto@support.(juno|netzero).com/',
         ],
         'body_map'      => [
             //
