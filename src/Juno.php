@@ -1,6 +1,7 @@
 <?php
 
 namespace AbuseIO\Parsers;
+use AbuseIO\Models\Incident;
 
 /**
  * Class Juno
@@ -44,17 +45,18 @@ class Juno extends Parser
 
                         $report['evidence'] = $this->arfMail['evidence'];
 
-                        $this->events[] = [
-                            'source'        => config("{$this->configBase}.parser.name"),
-                            'ip'            => $report['Source-IP'],
-                            'domain'        => false,
-                            'uri'           => false,
-                            'class'         => config("{$this->configBase}.feeds.{$this->feedName}.class"),
-                            'type'          => config("{$this->configBase}.feeds.{$this->feedName}.type"),
-                            'timestamp'     => strtotime($report['Arrival-Date']),
-                            'information'   => json_encode($report),
-                        ];
+                        $incident = new Incident();
+                        $incident->source      = config("{$this->configBase}.parser.name");
+                        $incident->source_id   = false;
+                        $incident->ip          = $report['Source-IP'];
+                        $incident->domain      = false;
+                        $incident->uri         = false;
+                        $incident->class       = config("{$this->configBase}.feeds.{$this->feedName}.class");
+                        $incident->type        = config("{$this->configBase}.feeds.{$this->feedName}.type");
+                        $incident->timestamp   = strtotime($report['Arrival-Date']);
+                        $incident->information = json_encode($report);
 
+                        $this->events[] = $incident;
                     }
                 } else {
                     $this->warningCount++;
