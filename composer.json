@@ -1,7 +1,7 @@
 {
     "name": "abuseio/parser-juno",
     "description": "Parser addon for handling notifications from juno",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "keywords": ["laravel", "abuseio", "parser", "juno"],
     "homepage": "http://abuse.io",
     "type": "library",
